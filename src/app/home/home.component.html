@@ -1,0 +1,42 @@
+<div class="form">
+  <div class="data">
+      <label for="location">Hegység:</label>
+      <select name="locationId" id="location" [(ngModel)]="selectedLocaton" (change)="locationSelect()">
+          <option value="">Kérem válasszon</option>
+          @for (location of locations; track $index) {
+            <option [value]="location.locationName">{{ location.locationName }}</option>
+
+          }
+      </select>
+  </div>
+</div>
+
+<div id="viewpoints">
+  @for (viewPoint of viewPoints; track $index) {
+    <div class="viewpoint">
+      <h2>{{ viewPoint.viewpointName}}</h2>
+      <div>
+          <ul>
+              <li>
+                  <label>Hegység:</label>
+                  <span>{{ viewPoint.mountain }}</span>
+              </li>
+              <li>
+                  <label>Magassága:</label>
+                  <span>{{ viewPoint.height }} m</span>
+              </li>
+              <li>
+                  <label>Épült:</label>
+                  <span>{{ viewPoint.built }}</span>
+              </li>
+          </ul>
+      </div>
+      <p class="description">
+          {{ viewPoint.description }}
+      </p>
+      <div class="image">
+          <img [src]="viewPoint.imageUrl">
+      </div>
+  </div>
+  }
+</div>
